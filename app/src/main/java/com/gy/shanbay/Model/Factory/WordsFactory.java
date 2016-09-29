@@ -44,6 +44,15 @@ public class WordsFactory {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if (is != null)
+                    is.close();
+                if (bufReader != null)
+                    bufReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

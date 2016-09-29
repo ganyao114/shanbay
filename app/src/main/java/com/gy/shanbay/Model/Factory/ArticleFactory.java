@@ -9,6 +9,7 @@ import com.gy.shanbay.Model.Entity.Unit;
 import com.gy.shanbay.R;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.regex.Pattern;
 
@@ -79,6 +80,15 @@ public class ArticleFactory {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+                try {
+                    if (is != null)
+                    is.close();
+                    if (bufReader != null)
+                    bufReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
         }
     }
 
