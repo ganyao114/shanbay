@@ -1,5 +1,11 @@
 package com.gy.shanbay.Presenter.Filter;
 
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+
 import com.gy.shanbay.Model.Entity.Lesson;
 import com.gy.shanbay.Model.Entity.Position;
 import com.gy.shanbay.Model.Entity.WordInChapter;
@@ -34,8 +40,8 @@ public class WordsFilter {
                     wordInChapter.setWord(words);
                     wordInChapter.setLevel(WordsMap.get(words.toLowerCase()));
                     Position position = p.clone();
-                    position.setStart(i);
-                    position.setEnd(i + words.length());
+                    position.setStart(i - words.length());
+                    position.setEnd(i);
                     wordInChapter.setPosition(position);
                     wordInChapters.add(wordInChapter);
                     words = "";
@@ -82,6 +88,14 @@ public class WordsFilter {
         if (wordsGroup != null)
             res.addAll(wordsGroup);
         lesson.setWords(res);
+    }
+
+    public void setSpan(String content,TextView tv,List<WordInChapter> words){
+        SpannableString ss = new SpannableString(content);
+        for (WordInChapter word:words){
+            ss.setSpan(new ForegroundColorSpan(Color.RED),word.getPosition().getStart(),word.getPosition().getEnd(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        }
+        tv.setText(ss);
     }
 
     public boolean isEnglish(char c){

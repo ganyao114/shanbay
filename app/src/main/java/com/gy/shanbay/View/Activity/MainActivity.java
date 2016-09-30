@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.gy.shanbay.Model.Entity.WordInChapter;
 import com.gy.shanbay.Model.Factory.ArticleFactory;
@@ -18,12 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
     private ExpandableListView index;
     private IndexAdapter adapter;
+    private TextView content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         index = (ExpandableListView) findViewById(R.id.index);
+        content = (TextView) findViewById(R.id.content);
+        index.setGroupIndicator(null);
         ArticleFactory factory = new ArticleFactory();
         factory.decode(this);
         WordsFactory wordsFactory = new WordsFactory();
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         WordsFilter filter = new WordsFilter();
         try {
             filter.decodeWordInChapter(factory.getArticle().getUnits().get(0).getLessons().get(0),wordsFactory.getWordsMap(),wordsFactory.getWordGroupsMap());
+            filter.setSpan(factory.getArticle().getUnits().get(0).getLessons().get(0).getContent(),content,factory.getArticle().getUnits().get(0).getLessons().get(0).getWords());
             Log.e("gy","单词数量"+factory.getArticle().getUnits().get(0).getLessons().get(0).getWords().size());
         } catch (Exception e) {
             e.printStackTrace();
