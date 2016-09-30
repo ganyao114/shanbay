@@ -5,14 +5,23 @@ package com.gy.shanbay.Model.Entity;
  */
 public class WordInChapter implements Cloneable{
 
-    private Word word;
+    private String word;
     private Position position;
+    private int level;
 
-    public Word getWord() {
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public String getWord() {
         return word;
     }
 
-    public void setWord(Word word) {
+    public void setWord(String word) {
         this.word = word;
     }
 
@@ -25,7 +34,7 @@ public class WordInChapter implements Cloneable{
     }
 
     @Override
-    protected WordInChapter clone() throws CloneNotSupportedException {
+    public WordInChapter clone() throws CloneNotSupportedException {
         return (WordInChapter) super.clone();
     }
 

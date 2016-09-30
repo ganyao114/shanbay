@@ -22,4 +22,9 @@ public class Position implements Cloneable{
     public void setEnd(int end) {
         this.end = end;
     }
+
+    @Override
+    public Position clone() throws CloneNotSupportedException {
+        return (Position) super.clone();
+    }
 }

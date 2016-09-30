@@ -18,7 +18,11 @@ import java.util.regex.Pattern;
  */
 public class ArticleFactory {
 
-    private static Article article = new Article();
+    private Article article = new Article();
+
+    public Article getArticle() {
+        return article;
+    }
 
     public void decode(Context context){
         Resources resources = context.getResources();
@@ -68,7 +72,7 @@ public class ArticleFactory {
                         break;
                     case Text:
                         if (curunit != null&&curlesson != null){
-                            conten.append(line);
+                            conten.append(line + "\n");
                         }else {
 
                         }

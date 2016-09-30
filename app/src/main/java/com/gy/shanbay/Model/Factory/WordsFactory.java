@@ -2,6 +2,7 @@ package com.gy.shanbay.Model.Factory;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 
 import com.gy.shanbay.R;
 
@@ -17,6 +18,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class WordsFactory {
 
     private Map<String,Integer> WordsMap = new ConcurrentHashMap<>();
+
+    private Map<String,Integer> WordGroupsMap = new ConcurrentHashMap<>();
+
+    public Map<String, Integer> getWordsMap() {
+        return WordsMap;
+    }
+
+    public Map<String, Integer> getWordGroupsMap() {
+        return WordGroupsMap;
+    }
 
     public void decode(Context context) {
         Resources resources = context.getResources();
@@ -37,10 +48,11 @@ public class WordsFactory {
                 String word = null;
                 if (s.length > 2){
                     word = line.split("\\s+"+s[s.length - 1])[0];
+                    WordGroupsMap.put(word,level);
                 }else {
                     word = s[0];
+                    WordsMap.put(word,level);
                 }
-                WordsMap.put(word,level);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,5 +66,7 @@ public class WordsFactory {
                 e.printStackTrace();
             }
         }
+        Log.e("gy",WordsMap.size()+"");
+        Log.e("gy",WordGroupsMap.size()+"");
     }
 }
