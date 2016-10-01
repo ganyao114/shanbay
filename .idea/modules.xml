@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SwiftFrameWork/SwiftFrameWork.iml" filepath="$PROJECT_DIR$/SwiftFrameWork/SwiftFrameWork.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/shanbay.iml" filepath="$PROJECT_DIR$/shanbay.iml" />
     </modules>

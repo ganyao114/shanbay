@@ -1,4 +1,4 @@
-package com.gy.shanbay.Model.Factory;
+package com.gy.shanbay.Presenter.Factory;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -61,6 +61,7 @@ public class ArticleFactory {
                             conten = new StringBuffer();
                             curlesson = curlesson.clone();
                             curlesson.setUid(curunit.getUid());
+                            curlesson.setLid(curunit.getLessons().size() + 1);
                             curlesson.setTitle(line);
                             curunit.getLessons().add(curlesson);
                         }else {

@@ -14,7 +14,7 @@ public class Lesson implements Cloneable{
     private int lid;
     private String title;
     private String content;
-    private List<WordInChapter> words = new ArrayList<>();
+    private List<WordInChapter> words;
 
     public int getUid() {
         return uid;
@@ -60,6 +60,7 @@ public class Lesson implements Cloneable{
     public Lesson clone() throws CloneNotSupportedException {
         Lesson lesson = (Lesson) super.clone();
         lesson.setContent(null);
+        lesson.setWords(null);
         return lesson;
     }
 

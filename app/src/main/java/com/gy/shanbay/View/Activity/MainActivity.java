@@ -5,17 +5,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gy.shanbay.Model.Entity.WordInChapter;
-import com.gy.shanbay.Model.Factory.ArticleFactory;
-import com.gy.shanbay.Model.Factory.WordsFactory;
+import com.gy.shanbay.Presenter.Factory.ArticleFactory;
+import com.gy.shanbay.Presenter.Factory.WordsFactory;
 import com.gy.shanbay.Presenter.Filter.WordsFilter;
+import com.gy.shanbay.Presenter.Listener.OnClickSpan;
 import com.gy.shanbay.R;
 import com.gy.shanbay.View.Adapter.IndexAdapter;
 
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnClickSpan{
 
     private ExpandableListView index;
     private IndexAdapter adapter;
@@ -35,12 +35,18 @@ public class MainActivity extends AppCompatActivity {
         adapter = new IndexAdapter(this,factory.getArticle());
         index.setAdapter(adapter);
         WordsFilter filter = new WordsFilter();
+        filter.setOnClickSpan(this);
         try {
             filter.decodeWordInChapter(factory.getArticle().getUnits().get(0).getLessons().get(0),wordsFactory.getWordsMap(),wordsFactory.getWordGroupsMap());
-            filter.setSpan(factory.getArticle().getUnits().get(0).getLessons().get(0).getContent(),content,factory.getArticle().getUnits().get(0).getLessons().get(0).getWords());
+            filter.setSpan(factory.getArticle().getUnits().get(0).getLessons().get(0).getContent(),content,factory.getArticle().getUnits().get(0).getLessons().get(0).getWords(),4);
             Log.e("gy","单词数量"+factory.getArticle().getUnits().get(0).getLessons().get(0).getWords().size());
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onWordClicked(WordInChapter word) {
+        Toast.makeText(this,word.getWord(),Toast.LENGTH_LONG).show();
     }
 }

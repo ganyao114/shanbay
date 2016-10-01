@@ -16,7 +16,7 @@ import com.gy.shanbay.R;
 /**
  * Created by gy939 on 2016/9/29.
  */
-public class IndexAdapter extends BaseExpandableListAdapter implements View.OnClickListener {
+public class IndexAdapter extends BaseExpandableListAdapter{
 
     private Context mContext;
     private Article article;
@@ -80,9 +80,6 @@ public class IndexAdapter extends BaseExpandableListAdapter implements View.OnCl
             groupHolder.groupImg.setBackgroundResource(R.drawable.rightarrow);
         }
         groupHolder.groupText.setText(article.getUnits().get(groupPosition).getTitle());
-
-        groupButton = (Button) convertView.findViewById(R.id.btn_group_function);
-        groupButton.setOnClickListener(this);
         return convertView;
     }
 
@@ -104,16 +101,6 @@ public class IndexAdapter extends BaseExpandableListAdapter implements View.OnCl
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_group_function:
-                //Log.d("MyBaseExpandableListAdapter", "你点击了group button");
-            default:
-                break;
-        }
     }
 
     private class GroupHolder
