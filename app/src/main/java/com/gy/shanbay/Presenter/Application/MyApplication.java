@@ -21,6 +21,7 @@ public class MyApplication extends Application{
         super.onCreate();
         S.init(this);
         ReflectCacheControl.getInstance().AddpreLoad(ClassType.ACTIVITY, AnnotationFactory.getAllActivity(this));
+        ReflectCacheControl.getInstance().preLoad(ClassType.ACTIVITY);
         ActivityLifeManager.getInstance().regist(this);
         ActivityLifeManager.getInstance().preLoad(new Class[]{MainPresenter.class});
         Presenter.establish();
