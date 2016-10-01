@@ -12,11 +12,9 @@ import com.gy.shanbay.Presenter.Factory.ArticleFactory;
 import com.gy.shanbay.Presenter.Factory.WordsFactory;
 import com.gy.shanbay.Presenter.Filter.WordsFilter;
 import com.gy.shanbay.Presenter.Listener.OnClickSpan;
-import com.gy.shanbay.View.Activity.MainActivity;
 import com.gy.shanbay.View.Activity.ReadActivity;
 
 import net.gy.SwiftFrameWork.IOC.Core.impl.IOC;
-import net.gy.SwiftFrameWork.IOC.UI.view.viewinject.annotation.ContentView;
 import net.gy.SwiftFrameWork.Presenter.ActivityLife;
 import net.gy.SwiftFrameWork.Presenter.ActivityLifeType;
 import net.gy.SwiftFrameWork.Presenter.IPresenter;

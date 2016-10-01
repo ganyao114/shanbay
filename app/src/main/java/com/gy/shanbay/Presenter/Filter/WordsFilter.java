@@ -147,7 +147,7 @@ public class WordsFilter {
     }
 
     public boolean isEnglish(char c){
-        if ((c >= 'A' && c <= 'Z') ||(c >= 'a' && c <= 'z') ){
+        if ((c >= 'A' && c <= 'Z') ||(c >= 'a' && c <= 'z')||c == '-'){
             return true;
         }else {
             return false;
